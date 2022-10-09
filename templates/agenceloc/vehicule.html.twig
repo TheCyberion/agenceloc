@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicule{% endblock %}
+
+{% block body %}
+{% for vehicule in vehicules_all %}
+
+<div class="card border-info mx-auto mb-5" style="max-width: 60vw;">
+            <div class="card-header"> <h3>{{ vehicule.titre }}</h3></div>
+            <div class="card-body">
+                <h4 class="card-title">{{ vehicule.marque }} / {{vehicule.modele}}</h4>
+                <p class="card-text container">
+                <div class="row">
+                    <div class="col-6 mx-auto text-center"><img src="{{ vehicule.photo }}" width="80%"></div>
+                    <div class="col-6 ">
+                    <h6 class="card-subtitle">Description : </h6>
+                    <br>
+                    {{ vehicule.description }}</div>            
+                </div></p>
+                
+            </div>
+            <div class="container">
+                <div class="row">
+                <div class="col-10"></div>
+                    <h5 class="col-2">Prix/jour : {{ vehicule.getPrix_journalier }}€</h5>
+                </div>
+                <a href="{{path('app_agenceloc_commande')}}" class="btn btn-danger">passer la commande</a>
+            </div>
+        </div>
+{% endfor %}
+
+{{ form_start(form, {
+  attr: {novalidate: 'novalidate'
+}}) }}
+  <div class="container">
+    <div class="row col-12">
+      <div class="col">
+      {{ form_row(form.titre, {
+        label: 'Titre'
+      }) }}
+      </div>
+      <div class="col">
+      {{ form_row(form.marque, {
+        label: 'Marque'
+      }) }}
+      </div>
+      <div class="col">
+      {{ form_row(form.modele, {
+        label: 'Modèle'
+      }) }}
+      </div>
+      <div class="col">
+      {{ form_row(form.prix_Journalier, {
+        label: 'Prix'
+      }) }}
+      </div>
+    <div class="row col-12">
+    <div class="col">
+      {{ form_row(form.photo, {
+        label: 'Photo'
+      }) }}
+      </div>
+      <div class="col">
+      {{ form_row(form.description, {
+        label: 'Description'
+      }) }}
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+      {% if editMode %}
+      <button type="submit" class="btn btn-warning mt-2 mb-2 col-12">
+        Enregistrer les modifications
+      </button>
+      {% else %}
+      <button type="submit" class="btn btn-info mt-2 mb-2 col-12">
+        Ajouter le véhicule
+      </button>
+      {% endif %}
+
+  </div>
+{{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Inscription</h1>
+    {# <div class="container border border-secondary" style="text-center;"> #}
+    {# <div class="position-absolute top-50 start-50 translate-middle border border-secondary"> #}
+<div class="form-group col-6 p-5 control-label border-shadow border border-dark">
+    {{ form_start(registrationForm, {
+        'attr': {
+            'class': 'form-control'
+            }
+        }) }}
+    <form class="form vstack gap-3 col-8 col-mt-3  ">
+        <div class="form-group col-4 row p-2">
+            {{ form_row(registrationForm.email, {
+                label: 'E-mail'
+            }) }}
+            </div>
+            <div class="form-group col-4 row p-2">
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe'
+            }) }}
+            </div>
+            <div class="form-group col-4 row p-2">
+            {{ form_row(registrationForm.nom) }}
+            </div>
+            <div class="form-group col-4 row p-2">
+            {{ form_row(registrationForm.prenom) }}
+            </div>
+            <div class="form-group col-4 row p-2">
+            {{ form_row(registrationForm.pseudo) }}
+            </div>
+            <div class="form-group col-4 row p-2">
+            {{ form_row(registrationForm.civilite) }}
+            </div>
+            <div class="form-group col-4 row p-2">
+            {{ form_row(registrationForm.roles) }}
+            </div>
+            <button type="submit" class="btn btn-info col-12"> S'enregistrer </button>
+        </form>
+    {{ form_end(registrationForm) }}
+</div>
+</center>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicule{% endblock %}
+
+{% block body %}
+<h1>Commande d'id : {{ commande.id }}</h1>
+<div class="card border-success mb-3" style="max-width: 80vw;">
+            <div class="card-header"><h3>Commande du {{commande.dateEnregistrement|date("d/m/y à H:i:s")}}</h3></div>
+            <div class="card-body">
+                <h4 class="card-title">{{commande.idmembre.pseudo}} / {{commande.idvehicule.titre}}</h4>
+                <p class="card-text">
+                -heure de départ : {{ commande.dateheuredepart|date("d/m/y à H:i:s") }}<br>
+                -heure de retour : {{ commande.dateheurefin|date("d/m/y à H:i:s") }}<br>              
+                </p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10"></div>
+                        <div class="col-2"><h5>Prix Total : {{ commande.prixtotal }}€</h5></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Le Membre
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+      <div class="accordion-body">
+            <div class="card border-danger mx-auto mb-5" style="max-width: 60vw;">
+            <div class="card-header"> <h3>{{commande.idmembre.pseudo}} / id : {{commande.idmembre.id}}</h3></div>
+            <div class="card-body">
+                <h4 class="card-title">{{commande.idmembre.nom}} {{commande.idmembre.prenom}}</h4>
+                <p class="card-text">
+                -email : {{ commande.idmembre.email}}<br>
+                -civilité : {{ commande.idmembre.civilite}}<br>              
+                </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Le Véhicule
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
+      <div class="accordion-body">
+        <div class="card border-info mx-auto mb-5" style="max-width: 60vw;">
+            <div class="card-header"> <h3>{{commande.idvehicule.titre}}</h3></div>
+            <div class="card-body">
+                <h4 class="card-title">{{commande.idvehicule.marque}} / {{commande.idvehicule.modele}}</h4>
+                <p class="card-text">
+                <div class="container mx-auto text-center"><img src="{{commande.idvehicule.photo}}" width="80%"></div>
+                <br>
+                Description : <br>{{ commande.idvehicule.description}}<br>
+                
+                <h5 class="text-right">Prix/jour : {{ commande.idvehicule.prixjournalier}}€</h5>              
+                </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

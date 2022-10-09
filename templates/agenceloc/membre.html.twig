@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicule{% endblock %}
+
+{% block body %}
+<h1>Le membre d'id : {{ membre.id }}</h1>
+<div class="card border-danger mx-auto mb-5" style="max-width: 80vw;">
+            <div class="card-header"><h3>{{membre.pseudo}}</h3></div>
+            <div class="card-body">
+                <h4 class="card-title">{{membre.nom}} {{membre.prenom}}</h4>
+                <p class="card-text">
+                -email : {{ membre.email}}<br>
+                -civilité : {{ membre.civilite}}<br>
+                <small class="text-right">{{membre.dateenregistrement|date("d/m/Y à H:i:s")}}</small>              
+                </p>
+            </div>
+        </div>
+{% endblock %}

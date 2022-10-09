@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5 mb-5">Bienvenue dans le BACKOFFICE</h1>
+
+<div class="card border-light mb-3 mx-auto" style="max-width: 90vh;">
+  <div class="card-body container">
+    <div class="row">
+        <a class="btn btn-primary col-12 mt-5" href="{{ path('admin_vehicules') }}">Administration Vehicules</a>
+        <a class="btn btn-primary col-12  mt-5" href="{{ path('admin_membres') }}">Administration Membres</a>
+        <a class="btn btn-primary col-12  mt-5 mb-5" href="{{ path('admin_commandes') }}">Administration Commandes</a> 
+    </div>
+  </div>
+</div>
+{% endblock %}
